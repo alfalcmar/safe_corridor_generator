@@ -1,0 +1,24 @@
+# decompose
+test: false
+loop_rate: 0.2 #main loop rate
+decompose_inflation: 1.00 # radius of robot for obstacles inflation
+segment_margin: 0.0 # does not seem to influence to solution
+local_bbox: [2.0, 2.0, 2.0] # size of the cuboid around the path in which the free space will be generated
+
+#jps3d
+map_width_x: 140
+map_width_y: 140
+map_width_z: 50
+max_height: 50
+map_center: [0, 0, 0]
+drone_radius: 0.5 # unused
+inflation: 1.2
+resolution: 0.25
+z_ground: 0
+max_jps_expansions: 500
+
+# sampling
+max_sampling_dist: 0.30
+
+
+

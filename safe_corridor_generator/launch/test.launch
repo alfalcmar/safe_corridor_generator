@@ -1,0 +1,44 @@
+<launch>
+
+  <arg name="uav_name" default="$(optenv UAV_NAME uav)"/>
+  <arg name="respawn" default="false" />
+  <arg name="standalone" default="true" />
+  <arg name="run_rviz" default="true" />
+
+  <arg name="debug" default="false" />
+  <arg unless="$(arg debug)" name="launch_prefix_debug" value=""/>
+  <arg     if="$(arg debug)" name="launch_prefix_debug" value="debug_roslaunch"/>
+  <arg name="profile" default="false" />
+  <arg unless="$(arg profile)" name="launch_prefix_profile" value=""/>
+  <arg     if="$(arg profile)" name="launch_prefix_profile" value="valgrind --tool=callgrind --dump-instr=yes --simulate-cache=yes --collect-jumps=yes"/>
+
+  <arg unless="$(arg standalone)" name="nodelet" value="load" />
+  <arg     if="$(arg standalone)" name="nodelet" value="standalone" />
+  <arg unless="$(arg standalone)" name="nodelet_manager" value="$(arg uav_name)_darpa_nodelet_manager" />
+  <arg     if="$(arg standalone)" name="nodelet_manager" value="" />
+  <group ns="$(arg uav_name)">
+
+    <node name="decompose_node" pkg="nodelet" type="nodelet" args="$(arg nodelet) safe_corridor_generator/DecomposeNode $(arg nodelet_manager)" output="screen">
+
+      <rosparam file="$(find safe_corridor_generator)/config/params.yaml" />
+
+      <param name="pcl_filepath" value="$(find formation_church_planning)/maps/pcd_files/power_tower_danube.pcd" />
+      <param name="world_frame" value="$(arg uav_name)/global_origin" />
+
+      <remap from="~path_out" to="~path_out" />
+      <remap from="~path_in" to="~path_in" />
+      <remap from="~pcl_map_out" to="~pcl_map_out" />
+      <remap from="~polyhedrons_out" to="~polyhedrons_out" />
+      <remap from="~ellipsoids_out" to="~ellipsoids_out" />
+
+    </node>
+
+  </group>
+
+  <group if="$(arg run_rviz)">
+    <include file="$(find safe_corridor_generator)/launch/rviz.launch">
+      <arg name="uav_name" value="$(arg uav_name)" />
+    </include>
+  </group>
+
+</launch>

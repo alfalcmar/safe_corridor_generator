@@ -1,0 +1,6 @@
+<library path="lib/libDecomposeNode">
+  <class name="safe_corridor_generator/DecomposeNode" type="safe_corridor_generator::DecomposeNode" base_class_type="nodelet::Nodelet">
+    <description>Nodelet for decomposition of free space surrounding path</description>
+  </class>
+</library>
+
