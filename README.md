@@ -1,1 +1,1 @@
-# safe_corridor_generator
+This package uses code from the [JPS3D](https://github.com/KumarRobotics/jps3d) and [DecompROS](https://github.com/sikang/DecompROS) repositories (included in the `thirdparty` folder), please, reference them as well.
