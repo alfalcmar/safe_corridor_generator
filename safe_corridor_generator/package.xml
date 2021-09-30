@@ -6,7 +6,9 @@
   <description>The package for generation of safe corridor</description>
 
   <author email="vit.kratky@fel.cvut.cz">Vit Kratky</author>
-  <maintainer email="vit.kratky@fel.cvut.cz">Vit Kratky</maintainer>
+  <author email="aamarin@us.es">Alfonso Alcantara</author>
+
+  <maintainer email="aamarin@us.es">Vit Kratky</maintainer>
 
   <license>BSD 3-Clause</license>
 
