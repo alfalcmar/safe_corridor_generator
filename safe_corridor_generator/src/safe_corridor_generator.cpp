@@ -241,7 +241,7 @@ nav_msgs::PathPtr SafeCorridorGenerator::vec3fPathToNavMsgsPath(vec_Vec3f jps_pa
     p.z              = waypoint(2);
     ps.pose.position = p;
     ps_vector.push_back(ps);
-    ROS_INFO("[SafeCorridorgenerator]: path waypoint = [%.2f, %.2f, %.2f] ", p.x, p.y, p.z);
+    // ROS_INFO("[SafeCorridorgenerator]: path waypoint = [%.2f, %.2f, %.2f] ", p.x, p.y, p.z);
   }
 
   nav_path->poses = ps_vector;
