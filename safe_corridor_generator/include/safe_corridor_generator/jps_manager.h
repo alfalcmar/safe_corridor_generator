@@ -35,6 +35,8 @@ public:
 
   void updateMap();
 
+  void updateMap(boost::shared_ptr<pcl::PointCloud<pcl::PointXYZ>> &_pcd_input);
+
   void freeStartPoint(const Vec3f& start);
 
 

@@ -532,6 +532,14 @@ void SafeCorridorGenerator::updateMaps() {
            decompose_wrapper_->getPclCloud()->height * decompose_wrapper_->getPclCloud()->width);
 }
 
+
+void SafeCorridorGenerator::updateMaps(boost::shared_ptr<pcl::PointCloud<pcl::PointXYZ>> &_pcd_input, const std::vector<float> &_pose) {
+  decompose_wrapper_->updateMap(_pcd_input);
+  jps_manager_->updateMap(_pcd_input);
+  ROS_INFO("[SafeCorridorGenerator]: Maps updated. New size of the pointcloud = %d",
+           decompose_wrapper_->getPclCloud()->height * decompose_wrapper_->getPclCloud()->width);
+}
+
 //}
 
 /* generatePclSphere() //{ */

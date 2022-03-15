@@ -49,6 +49,20 @@ bool DecomposeWrapper::updateMap() {
   }
 }
 
+bool DecomposeWrapper::updateMap(boost::shared_ptr<pcl::PointCloud<pcl::PointXYZ>> &_pcd_input) {
+  sensor_msgs::PointCloud cloud_msg;
+  pcl::toROSMsg(*_pcd_input.get(), pcl_sensor_message_);
+  if (sensor_msgs::convertPointCloud2ToPointCloud(pcl_sensor_message_, cloud_msg)) {
+    pcl_map_vector_ = DecompROS::cloud_to_vec(cloud_msg);
+    got_pcl_map_     = true;
+    pcl_map_changed_ = true;
+    return true;
+  } else {
+    ROS_WARN("[DecomposeWrapper]: Conversion of PointCloud to PointCloud2 failed.");
+    return false;
+  }
+}
+
 //}
 
 

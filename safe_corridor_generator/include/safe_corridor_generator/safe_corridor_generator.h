@@ -50,6 +50,8 @@ public:
 
   void setMaxSamplingDistance(double max_sampling_distance);
 
+  void updateMaps(boost::shared_ptr<pcl::PointCloud<pcl::PointXYZ>> &_pcd_input, const std::vector<float> &_pose);
+
   void updateMaps();
 
   nav_msgs::PathPtr getLastPath();

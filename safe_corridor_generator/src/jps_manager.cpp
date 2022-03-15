@@ -48,6 +48,13 @@ void JPSManager::updateMap() {
   ROS_INFO("[JPSManager]: Map update lasts %.2f s ", (ros::WallTime::now() - start).toSec());
 }
 
+void JPSManager::updateMap(boost::shared_ptr<pcl::PointCloud<pcl::PointXYZ>> &_pcd_input) { 
+  ROS_INFO("[JPSManager]: Update map");
+  ros::WallTime start = ros::WallTime::now();
+  map_util_->readMap(cloud_, cells_x_, cells_y_, cells_z_, res_, center_map_, z_ground_, z_max_, inflation_jps_);  // Map read
+  ROS_INFO("[JPSManager]: Map update lasts %.2f s ", (ros::WallTime::now() - start).toSec());
+}
+
 vec_Vecf<3> JPSManager::solveJPS3D(const Vec3f& start, const Vec3f& goal, bool& solved, bool plan_to_nearest) {
 
   bool valid_jps = planner_ptr_->plan(start, goal, 1, true, max_jps_expansions_, plan_to_nearest);  // start and goal in coordinates (m)

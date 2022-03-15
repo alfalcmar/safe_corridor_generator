@@ -56,6 +56,8 @@ public:
 
   bool updateMap();
 
+  bool updateMap(boost::shared_ptr<pcl::PointCloud<pcl::PointXYZ>> &_pcd_input);
+
 private:
   void mainLoop([[maybe_unused]] const ros::TimerEvent &evt);
 
