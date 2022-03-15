@@ -50,6 +50,10 @@ void JPSManager::updateMap() {
 
 void JPSManager::updateMap(boost::shared_ptr<pcl::PointCloud<pcl::PointXYZ>> &_pcd_input) { 
   ROS_INFO("[JPSManager]: Update map");
+
+  // UPDATE CLOUD FROM _pcd_input
+  cloud_ = _pcd_input;
+
   ros::WallTime start = ros::WallTime::now();
   map_util_->readMap(cloud_, cells_x_, cells_y_, cells_z_, res_, center_map_, z_ground_, z_max_, inflation_jps_);  // Map read
   ROS_INFO("[JPSManager]: Map update lasts %.2f s ", (ros::WallTime::now() - start).toSec());

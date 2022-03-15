@@ -50,6 +50,9 @@ bool DecomposeWrapper::updateMap() {
 }
 
 bool DecomposeWrapper::updateMap(boost::shared_ptr<pcl::PointCloud<pcl::PointXYZ>> &_pcd_input) {
+  // UPDATE PCL CLOUD
+  pcl_cloud_ = _pcd_input;
+
   sensor_msgs::PointCloud cloud_msg;
   pcl::toROSMsg(*_pcd_input.get(), pcl_sensor_message_);
   if (sensor_msgs::convertPointCloud2ToPointCloud(pcl_sensor_message_, cloud_msg)) {
